@@ -7,13 +7,7 @@
     <script src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-    <h1>Slang Translator</h1>
-    <p>Enter a slang term and click the button to translate:</p>
-    <input type="text" id="slangInput" required>
-    <button onclick="translate()">Translate</button>
 
-    <p id="translationResult"></p>
-	
 	<py-config>
       [[interpreters]]
         src = "https://cdn.jsdelivr.net/pyodide/v0.23.0/full/pyodide.js"
@@ -21,7 +15,14 @@
         lang = "python"
     </py-config>
 
-    <script type="text/python">
+    <h1>Slang Translator</h1>
+    <p>Enter a slang term and click the button to translate:</p>
+    <input type="text" id="slangInput" required>
+    <button onclick="translate()">Translate</button>
+
+    <p id="translationResult"></p>
+
+    <py-script>
         import json
 
         slang_dictionary = {
@@ -59,7 +60,7 @@
                 return slang_dictionary[slang]
             else:
                 return "Slang not found"
-    </script>
+    </py-script>
 
     <script type="text/javascript">
         pyodide.loadPackage().then(() => {
