@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Slang Translator</title>
-    <script src="https://pyodide.org/static/js/pyodide.js"></script>
-    <script src="https://pyscript.net/latest/pyscript.js"></script>
+	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
 
@@ -13,67 +13,60 @@
         src = "https://cdn.jsdelivr.net/pyodide/v0.23.0/full/pyodide.js"
         name = "pyodide-0.23.0"
         lang = "python"
-    </py-config>
+    </py-config>	
 
-    <h1>Slang Translator</h1>
+    <script type="text/python">
+	import json
+
+	slang_dictionary = {
+		"cap": "You're lying",
+		"no cap": "I'm not lying",
+		"lit": "Really good or exciting",
+		"bet": "Agreement or confirmation",
+		"fr": "For real",
+		"ong": "On God or more accurately I swear on god",
+		"no shot": "No way or no chance",
+		"ratio'd": "The ratio of comments to likes on your social media post is unfavorable so your opinion is bad",
+		"ratiod": "The ratio of comments to likes on your social media post is unfavorable so your opinion is bad",
+		"fell off": "The person in question is no longer relevant",
+		"who asked": "Maybe the one literal zoomer slang in existence. Used to invalidate your opinion by implying no one asked for it",
+		"bussin": "Extremely good or tasty",
+		"bussin'": "Extremely good or tasty",
+		"bussing": "Extremely good or tasty",
+		"drip": "Nice, cool or otherwise trendy clothing",
+		"boomer": "Derogatory term for literally anyone older than them, even if you're a millennial it matters not",
+		"slaps": "This is excellent or amazing, usually referring to music but can be used in other contexts too",
+		"this slaps": "This is excellent or amazing, usually referring to music but can be used in other contexts too",
+		"say less": "Stop talking, I understand and am on board with what you're saying",
+		"low key": "Moderate, quiet or restrained enthusiasm for something or someone",
+		"high key": "Open and earnest enthusiasm for something or someone",
+		"rizz": "Charm or the ability to effortlessly flirt with others",
+		"yeet": "To throw something with force",
+		"goat": "Greatest of all time",
+		"yolo": "You only live once",
+		"g.o.a.t": "Greatest of all time"
+	}
+
+	def translate_slang(slang):
+		slang = slang.lower()
+		if slang in slang_dictionary:
+			return slang_dictionary[slang]
+		else:
+			return "Slang not found"
+
+	def translate():
+		slang = window.prompt("Enter a slang term:")
+		translation = translate_slang(slang)
+		console.log("The translation is:", translation)
+
+    </script>
+	
+	<h1>Slang Translator</h1>
     <p>Enter a slang term and click the button to translate:</p>
     <input type="text" id="slangInput" required>
     <button onclick="translate()">Translate</button>
 
     <p id="translationResult"></p>
-
-    <script type="text/python">
-        import json
-
-        slang_dictionary = {
-            "cap":"You're lying",
-			"no cap":"I'm not lying",
-			"lit":"Really good or exciting",
-			"bet":"Agreement or confirmation",
-			"fr":"For real",
-			"ong":"On God or more accurately I swear on god",
-			"no shot":"No way or no chance",
-			"ratio'd":"The ratio of comments to likes on your social media post is unfavourable so your opinion is bad",
-			"ratiod":"The ratio of comments to likes on your social media post is unfavourable so your opinion is bad",
-			"fell off":"The person in question is no longer relevant",
-			"who asked":"Maybe the one literal zoomer slang in existence. Used to invalidate your opinion by implying no one asked for it",
-			"bussin":"Extremely good or tasty",
-			"bussin'":"Extremely good or tasty",
-			"bussing":"Extremely good or tasty",
-			"drip":"Nice, cool or otherwise trendy clothing",
-			"boomer":"Derogatory term for literally anyone older than them, even if you're a millenial it matters not",
-			"slaps":"This is excellent or amazing, usually referring to music but can be used in other contexts too",
-			"this slaps":"This is excellent or amazing, usually referring to music but can be used in other contexts too",
-			"say less":"Stop talking, I understand and am on board with what you're saying",
-			"low key":"Moderate, quiet or restrained enthusiasm for something or someone",
-			"high key":"Open and earnest enthusiasm for something or someone",
-			"rizz":"Charm or the ability to effortlessly flirt with others",
-			"yeet":"To throw something with force",
-			"goat":"Greatest of all time",
-			"yolo":"You only live once",
-			"g.o.a.t":"Greatest of all time"
-        }
-
-        def translate_slang(slang):
-            slang = slang.lower()
-            if slang in slang_dictionary:
-                return slang_dictionary[slang]
-            else:
-                return "Slang not found"
-    </script>
-
-    <script type="text/javascript">
-        pyodide.loadPackage().then(() => {
-            const translate = pyodide.pyimport('translate_slang');
-
-            function translatePython() {
-                const slang = document.getElementById('slangInput').value;
-                const translation = translate(slang);
-                document.getElementById('translationResult').innerText = "The translation is: " + translation;
-            }
-
-            document.getElementById('translateButton').addEventListener('click', translatePython);
-        });
-    </script>
+	
 </body>
 </html>
