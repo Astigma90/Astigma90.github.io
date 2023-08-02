@@ -22,7 +22,7 @@
 
     <p id="translationResult"></p>
 
-    <py-script>
+    <script type="text/python">
         import json
 
         slang_dictionary = {
@@ -60,7 +60,7 @@
                 return slang_dictionary[slang]
             else:
                 return "Slang not found"
-    </py-script>
+    </script>
 
     <script type="text/javascript">
         pyodide.loadPackage().then(() => {
