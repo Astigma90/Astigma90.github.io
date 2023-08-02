@@ -1,11 +1,100 @@
 <html>
   <head>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+			word-wrap: break-word;
+        }
+    </style>
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+	<title>Zoomender - Zoomer Slang Translator</title>
   </head>
   <body>
     <py-script>
-        print('Hello, World!')
+        
+		slang_dictionary = {
+		"cap":"You're lying",
+		"no cap":"I'm not lying",
+		"lit":"Really good or exciting",
+		"bet":"Agreement or confirmation",
+		"fr":"For real",
+		"ong":"On God or more accurately I swear on god",
+		"no shot":"No way or no chance",
+		"ratio'd":"The ratio of comments to likes on your social media post is unfavourable so your opinion is bad",
+		"ratiod":"The ratio of comments to likes on your social media post is unfavourable so your opinion is bad",
+		"fell off":"The person in question is no longer relevant",
+		"who asked":"Maybe the one literal zoomer slang in existence. Used to invalidate your opinion by implying no one asked for it",
+		"bussin":"Extremely good or tasty",
+		"bussin'":"Extremely good or tasty",
+		"bussing":"Extremely good or tasty",
+		"drip":"Nice, cool or otherwise trendy clothing",
+		"boomer":"Derogatory term for literally anyone older than them, even if you're a millenial it matters not",
+		"slaps":"This is excellent or amazing, usually referring to music but can be used in other contexts too",
+		"this slaps":"This is excellent or amazing, usually referring to music but can be used in other contexts too",
+		"say less":"Stop talking, I understand and am on board with what you're saying",
+		"low key":"Moderate, quiet or restrained enthusiasm for something or someone",
+		"high key":"Open and earnest enthusiasm for something or someone",
+		"rizz":"Charm or the ability to effortlessly flirt with others",
+		"yeet":"To throw something with force",
+		"goat":"Greatest of all time",
+		"yolo":"You only live once",
+		"g.o.a.t":"Greatest of all time"
+		}
+
+		def translate_zoomer(slang):
+		  slang = slang.lower()
+		  if slang in slang_dictionary:
+			return slang_dictionary[slang]
+		  else:
+			return "Slang not found"
+
     </py-script>
+	<div class="container">
+    <h2>Zoomer Slang Translator</h2>
+
+    <form method="POST">
+        <input type="text" id="slang" name="slang" placeholder="Enter slang term..." value=""><br>
+        <input type="submit" value="Translate">
+    </form>
+
+    <p>The translation is: <strong>{{ translation }}</strong></p>
   </body>
 </html>
