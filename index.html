@@ -13,16 +13,7 @@
         src = "https://cdn.jsdelivr.net/pyodide/v0.23.0/full/pyodide.js"
         name = "pyodide-0.23.0"
         lang = "python"
-    </py-config>
-	
-    <h1>Slang Translator</h1>
-    <p>Enter a slang term and click the button to translate:</p>
-    <input type="text" id="slangInput" required>
-    <button onclick="translate()">Translate</button>
-
-    <p id="translationResult"></p>
-	
-	
+    </py-config>	
 
     <script type="text/python">
 	import json
@@ -69,5 +60,13 @@
 		console.log("The translation is:", translation)
 
     </script>
+	
+	<h1>Slang Translator</h1>
+    <p>Enter a slang term and click the button to translate:</p>
+    <input type="text" id="slangInput" required>
+    <button onclick="translate()">Translate</button>
+
+    <p id="translationResult"></p>
+	
 </body>
 </html>
